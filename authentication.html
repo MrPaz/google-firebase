@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Coding Temple Game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link rel='stylesheet' href='main.css'/>
+    </head>
+    <body>
+        <form id="register">
+            <fieldset>
+                <legend>Register</legend>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="reg_email">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="reg_password">
+                <input type="submit" value="Register">
+            </fieldset>
+        </form>
+        <form id="login">
+            <fieldset>
+                <legend>Login</legend>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="log_email" />
+                <label for="password">Password</label>
+                <input type="password" name="password" id="log_password" />
+                <input type="submit" value="Login" />
+            </fieldset>
+        </form>
+        <form id="logout">
+            <fieldset>
+                <legend>Logout</legend>
+                <input type="submit" value="Logout" />
+            </fieldset>
+        </form>
+        <a href="index.html">Go Home</a>
+
+        <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+            apiKey: "AIzaSyBCHnXWNyQLgWUyaVP5_sAI9C1LynNVRkI",
+            authDomain: "codingtemplegame1.firebaseapp.com",
+            databaseURL: "https://codingtemplegame1.firebaseio.com",
+            projectId: "codingtemplegame1",
+            storageBucket: "codingtemplegame1.appspot.com",
+            messagingSenderId: "748234773891"
+            };
+            firebase.initializeApp(config);
+        </script>
+        <script src=auth.js></script>
+    </body>
+</html>
