@@ -2,9 +2,12 @@ var body = document.querySelector("body");
 var colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 var u;
 
-var frameSize = 64;
-var totalXFrames = 8;
+var frameSizeX = 90;
+var totalXFrames = 11;
 var currentXFrame = 0;
+var frameSizeY = 150;
+var totalYFrames = 3;
+var currentYFrame = 0;
 var sx = 0;
 var sy = 0;
 var dx = 0;
@@ -72,15 +75,15 @@ window.addEventListener("resize", function(){
 function redraw(){
     context.clearRect(0, 0, canvas.width, canvas.height);
     var skeleton = new Image();
-    skeleton.src = "skeleton.png";
+    skeleton.src = "walkingsprite.png";
 
     skeleton.addEventListener("load", function(){
-        context.drawImage(skeleton, sx, sy, 64, 64, dx, dy, 64, 64);
+        context.drawImage(skeleton, sx, sy, 90, 150, dx, dy, 90, 150);
     });
 
     if(u){
         context.font = "16px monospace";
-        context.strokeText(u.email, dx - 30, dy + 80);
+        context.strokeText(u.email, dx, dy);
     }
 }
 
@@ -89,55 +92,59 @@ window.addEventListener("keydown", function(e){
     if(currentXFrame > totalXFrames){
         currentXFrame = 0;
     }
+    currentYFrame++;
+    if(currentYFrame > totalYFrames){
+        currentYFrame = 0;
+    }
     switch(e.key){
         case "w":{
             dy -= 10;
-            sy = 0 * frameSize;
-            sx = currentXFrame * frameSize;
+            sy = 3 * frameSizeY;
+            sx = currentXFrame * frameSizeX;
             break;
         }
         case "a":{
             dx -= 10;
-            sy = 1 * frameSize;
-            sx = currentXFrame * frameSize;
+            sy = 1 * frameSizeY;
+            sx = currentXFrame * frameSizeX;
             break;  
         }
         case "s":{
             dy += 10;
-            sy = 2 * frameSize;
-            sx = currentXFrame * frameSize;
+            sy = 0 * frameSizeY;
+            sx = currentXFrame * frameSizeX;
             break;
         }
         case "d":{
             dx += 10;
-            sy = 3 * frameSize;
-            sx = currentXFrame * frameSize;
+            sy = 2 * frameSizeY;
+            sx = currentXFrame * frameSizeX;
             break;
         }        
     }
     switch(e.keyCode){
         case 38:{
             dy -= 10;
-            sy = 0 * frameSize;
-            sx = currentXFrame * frameSize;
+            sy = 3 * frameSizeY;
+            sx = currentXFrame * frameSizeX;
             break;
         }
         case 37:{
             dx -= 10;
-            sy = 1 * frameSize;
-            sx = currentXFrame * frameSize;
+            sy = 1 * frameSizeY;
+            sx = currentXFrame * frameSizeX;
             break;  
         }
         case 40:{
             dy += 10;
-            sy = 2 * frameSize;
-            sx = currentXFrame * frameSize;
+            sy = 0 * frameSizeY;
+            sx = currentXFrame * frameSizeX;
             break;
         }
         case 39:{
             dx += 10;
-            sy = 3 * frameSize;
-            sx = currentXFrame * frameSize;
+            sy = 2 * frameSizeY;
+            sx = currentXFrame * frameSizeX;
             break;
         }       
     }
