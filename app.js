@@ -61,7 +61,7 @@ canvas.style.display = "none";
 var context = canvas.getContext("2d");
 context.canvas.height = window.innerHeight;
 context.canvas.width = window.innerWidth;
-canvas.style.backgroundColor = "black";
+//canvas.style.backgroundColor = "black";
 
 window.addEventListener("resize", function(){
     context.canvas.height = window.innerHeight;
@@ -113,7 +113,33 @@ window.addEventListener("keydown", function(e){
             sy = 3 * frameSize;
             sx = currentXFrame * frameSize;
             break;
+        }        
+    }
+    switch(e.keyCode){
+        case 38:{
+            dy -= 10;
+            sy = 0 * frameSize;
+            sx = currentXFrame * frameSize;
+            break;
         }
+        case 37:{
+            dx -= 10;
+            sy = 1 * frameSize;
+            sx = currentXFrame * frameSize;
+            break;  
+        }
+        case 40:{
+            dy += 10;
+            sy = 2 * frameSize;
+            sx = currentXFrame * frameSize;
+            break;
+        }
+        case 39:{
+            dx += 10;
+            sy = 3 * frameSize;
+            sx = currentXFrame * frameSize;
+            break;
+        }       
     }
     var skeleton = {
         sx: sx, 
