@@ -16,7 +16,9 @@ var dy = 0;
 var shitcoins = ["bcash.png", "bitconnect.png", "eos.png", "eth.png", "iota.png", "litecoin.png", "namecoin.png", "ripple.png", "tron.png", "verge.png"];
 var shitcoinDelay = 500;
 var shitcoinSpeed = 50;
+var levels = ["Level1.png", "Level2.png", "Level3.png", "Level4.png"];
 var level = 1;
+var nextLevel =1;
 var levelInterval = 15000;
 
 // function initializeColor(){
@@ -63,8 +65,14 @@ var gameOver = false;
 
 function playGame(){
     setInterval(function(){
-
-        level = Math.ceil(shitCoinObstacles.length / 100);
+        var levelImage = new Image();
+        levelImage.src = levels[level-1]; 
+        
+        if (level >= nextLevel){
+            context.drawImage(levelImage, 0, 0, context.canvas.width, context.canvas.height);
+            nextLevel++;
+        }
+        
         shitCoinObstacles.forEach(function(e) { e.x -= shitcoinSpeed * e.speed });
 
         if(Math.floor(Math.random() * 100) % 10 == 0 && !gameOver){
@@ -89,6 +97,7 @@ function playGame(){
             }
             
         }
+        level = Math.ceil(shitCoinObstacles.length / 100);
         redraw();
     },100);
 }
@@ -139,7 +148,6 @@ function redraw(){
     context.clearRect(0, 0, canvas.width, canvas.height);
     
     context.drawImage(skeleton, sx, sy, 90, 150, dx, dy, 90, 150);
-    
 
     // if(u){
     //     context.font = "16px monospace";
@@ -154,9 +162,7 @@ function redraw(){
         rekt.src = "rekt.png"
         
         rekt.addEventListener("load", function(){
-            context.drawImage(rekt, 0, 0, context.canvas.width, context.canvas.height);
-            
-            
+            context.drawImage(rekt, 0, 0, context.canvas.width, context.canvas.height);    
         })
     }
 }
